@@ -6,18 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-    const x=prompt('podaj liczbe')
-    const a=prompt('Podaj 1 liczbe przedzialu')
-    const b=prompt('Podaj 2 liczbe przedzialu')
-    if (x>=a && x<=b)
-    {
-        document.write('liczba miesci sie w przedziale')
-    }
-    else 
-    {
-        document.write('liczba nie miesci sie w przedziale')
-    }
+    <script type="text/javascript"> 
+        var a = prompt("podaj a");
+        var b = prompt("podaj b");
+        var x = 0;
+        
+       while (a != b) {
+         if (a < b) {
+           x = a; a = b; b = x;
+         }
+         a = a - b;
+       }
+       document.write("NWD = "+a);
     </script>
 </body>
 </html>
