@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+        background-color: black;
+        color: white;
+        padding: 20 px;
+        }
+        .zmiana{
+            background-color: orange;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<p class="akapit">
+MEGA ESSA MEGA ESSA MEGA ESSA MEGA ESSA
+</p>
+    <script>
+
+    //pobieramy akapit
+    const akapit = document.querySelector('p.akapit');
+
+    //przypisujemy obsługę zdarzenia najechania kursorem  myszy na akapit
+    akapit.addEventListener('mouseover',  function() {
+        //zmieniamy kolor tła akapitu
+        //akapit.style.backgroundColor = 'green';
+
+        //do akapitu dodajemy klase zmiana
+        akapit.classList.add('zmiana');
+    });
+
+    //przypisujemy obsługę zdarzenia zjechania kursorem myszy na akapit
+    akapit.addEventListener('mouseout', function() {
+        //akapit.style.backgroundColor = 'black';
+
+        //usuwamy klase zmiana z akapitu 
+        akapit.classList.remove('zmiana');
+    });
+
+    //przypisujemy obsluge zdarzenia click
+    akapit.addEventListener('click', function() {
+        akapit.textContent = 'Masno';
+    });
+
+    
+
+    
+    </script>
+</body>
+</html>

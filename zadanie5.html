@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="wynik"> </div>
+    <div class="suma"> </div>
+    <div class="zera"></div>
+
+    <input type="number" name="liczba">
+    <button>Ile razy</button>
+    <div class="ileRazy"></div>
+
+
+    <script>
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        const divWynik= document.querySelector('div.wynik');
+        const divSuma= document.querySelector('div.suma');
+        const divZera= document.querySelector('div.zera');
+
+        const btn = document.querySelector('button');
+        const divIlerazy = document.querySelector('div.ileRazy');
+
+        const liczby = [];
+        let suma=0;
+        let ileZer = 0;
+        for(let i=0; i<100; i++)
+        {
+            liczby[i]= getRandomIntInclusive(0, 100)
+            suma += liczby[i];
+        }
+
+        for (const liczba of liczby) {
+            if(liczba == 0) ileZer++;
+        }
+
+
+        divWynik.textContent = liczby.join(', ');
+        divSuma.textContent = document.writeln('Suma liczb tablicy wynosi: ' + suma);
+        divZera.textContent = document.writeln('Liczba zer w tablicy: ' + ileZer);
+
+        btn.addEventListener('click', function(){
+            const liczba = document.querySelector('input[name="liczba"]').value *1;
+            let ileRazy = 0;
+            for(const l of liczby){
+                if(l == liczba) ileRazy++;
+            }
+            divIlerazy.textContent = `Liczba ${liczba} w tablicy występuje ${ileRazy} razy`;
+        });
+
+
+    </script>
+</body>
+</html>

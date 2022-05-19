@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            margin: 10px 0;
+        }
+        label {
+            display: block;
+            width: 200px;
+        }
+        input[type="submit"]{
+            margin: 0 20px;
+        }
+        div.dane {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" novalidate>
+        <div>
+        <label for="imie">Podaj imię:</label>
+        <input type="text" name="imie" id="imie">
+        </div> 
+        <div>
+        <label for="imie">Podaj nazwisko:</label>
+        <input type="text" name="nazwisko" id="nazwisko">
+        </div>
+        <div>
+            <label for="telefon">Podaj numer telefonu:</label>
+            <input type="tel" name="telefon" id="telefon">
+        </div>
+        <div>
+            <label for="email">Podaj adres email:</label>
+            <input type="email" name="email" id="email">
+        </div>
+        <div>
+            <input type="reset" value="Wyczyść formularz">
+            <input type="submit" value="Wyślij formularz">
+        </div>   
+    </form>
+    <div class="dane">Tutaj będą dane z formularza</div>
+
+    <script>
+      //pobieramy wszystkie pola formularza (bez reseti wyslij) oraz div o klasie dane
+      const formularz = document.querySelector('form');
+      const imiePole = document.querySelector('input[name="imie"]');
+      const nazwiskoPole = document.querySelector('input[name="nazwisko"]');
+      const telefonPole = document.querySelector('input[name="telefon"]');
+      const emailPole = document.querySelector('input[name="email"]');
+      const divDane = document.querySelector('div.dane');
+      //wyrażenia regularne
+      const telefonRegex = /^\d{9}$/;
+      const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      //obługa zdarzenia submit na formularzu
+      formularz.addEventListener('submit', function (e){
+      //poniższy kod wykona się kiedy naciśniemy przycisk Wyślij
+      e.preventDefault();
+      //pobiermay wartości poszczególnych pól formularza
+      imie = imiePole.value;
+      nazwisko = nazwiskoPole.value;
+      telefon = telefonPole.value;
+      email = emailPole.value;
+      
+      //sprawdzamy czy wszystkie pola są uzupełnione
+      if(imie == '' || nazwisko == '' || telefon == '' || email == '') {
+          divDane.innerHTML = '<h3>Uzupełnij wszystkie pola!</h3>';
+      } 
+      else if(!telefon.match(telefonRegex)) {
+          //sprawdzamy czy telefon ma 9 cyfr
+          divDane.innerHTML = '<h3>Wpisz prawidłowy numer telefonu!</h3>';
+      }
+      else if(!email.match(emailRegex)) {
+        divDane.innerHTML = '<h3>Wpisz prawidłowy email!</h3>';
+      }
+      else {
+          //wyswietlamy wartości pól
+          divDane.innerHTML = 
+      `
+      <h2>Dane formularza:</h2>
+      <p>Imię: ${imie}</p>
+      <p>Nazwisko: ${nazwisko}</p>
+      <p>Telefon: ${telefon}</p>
+      <p>Email: ${email}</p>
+    `;
+      }
+
+
+
+      });
+    </script>
+</body>
+</html>
